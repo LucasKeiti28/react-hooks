@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 
-function App() {
+// import { Container } from './styles';
+
+export default function Hooks() {
   return (
-    <div className="App">
-      <p>Hooks</p>
+    <div>
+      <p>Hooks!</p>
     </div>
   );
 }
-
-export default App;
