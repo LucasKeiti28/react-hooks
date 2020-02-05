@@ -1,32 +1,28 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useState, useRef } from "react";
 
 // import { Container } from './styles';
 
-// useRef permite acessar os elementos do DOM
+export default function App() {
+  const [query, setQuery] = useState("");
+  const searchInput = useRef("");
 
-export default function Hooks() {
-  const [firstInput, setFirstInput] = useState("");
-  const [secondInput, setSecondInput] = useState("");
-  const firstInputRef = useRef(null);
-  const secondInputRef = useRef(null);
-
-  // useEffect(() => {
-  //   firstInputRef.current.focus();
-  // });
+  function handleClearSearch() {
+    searchInput.current.value = "Digite Aqui";
+    searchInput.current.focus();
+  }
 
   return (
-    <div>
-      <p>Hooks!</p>
-      <button onClick={() => setFirstInput(firstInputRef.current.focus())}>
-        First Input
+    <form action="onSubmit">
+      <input
+        type="text"
+        onChange={event => setQuery(event.target.value)}
+        ref={searchInput}
+      />
+      <button type="submit">Search</button>
+      <button type="button" onClick={handleClearSearch}>
+        Clear
       </button>
-      <button onClick={() => setSecondInput(secondInputRef.current.focus())}>
-        Second Input
-      </button>
-      <form action="submit">
-        <input type="text" ref={firstInputRef} />
-        <input type="text" ref={secondInputRef} />
-      </form>
-    </div>
+      <p>{query}</p>
+    </form>
   );
 }
